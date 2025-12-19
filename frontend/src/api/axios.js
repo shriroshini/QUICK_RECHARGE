@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const API = axios.create({
   baseURL: 'https://quick-recharge-3-backend.onrender.com',
+  timeout: 30000,
   headers: {
     'Content-Type': 'application/json',
   },
