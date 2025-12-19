@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: quickrecharge-backend
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: MONGO_URI
+        value: mongodb+srv://renderuser:render12345@cluster0.4qfvokg.mongodb.net/?appName=Cluster0
+      - key: JWT_SECRET
+        value: your_jwt_secret_key_here_make_it_long_and_secure
+      - key: JWT_EXPIRE
+        value: 7d
