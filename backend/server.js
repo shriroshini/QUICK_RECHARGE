@@ -25,9 +25,26 @@ app.use((req, res, next) => {
   next();
 });
 
-// Routes
+// Keep-alive and health check routes
 app.get('/', (req, res) => {
-  res.json({ message: 'Mobile Recharge CRUD & Auth API is running!' });
+  res.json({ 
+    message: 'Mobile Recharge CRUD & Auth API is running!',
+    timestamp: new Date().toISOString(),
+    status: 'healthy'
+  });
+});
+
+app.get('/health', (req, res) => {
+  res.json({ 
+    status: 'healthy',
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime()
+  });
+});
+
+// Keep-alive ping endpoint
+app.get('/ping', (req, res) => {
+  res.json({ pong: true, timestamp: new Date().toISOString() });
 });
 
 app.use('/api/auth', authRoutes);
